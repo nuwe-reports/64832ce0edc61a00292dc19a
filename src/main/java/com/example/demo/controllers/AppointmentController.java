@@ -56,10 +56,14 @@ public class AppointmentController {
          * Implement this function, which acts as the POST /api/appointment endpoint.
          * Make sure to check out the whole project. Specially the Appointment.java class
          */
+    	Appointment  a = new Appointment(appointment.getPatient(), appointment.getDoctor(),appointment.getRoom(),
+    			appointment.getStartsAt(),appointment.getFinishesAt());
+        appointmentRepository.save(a);
+        return new ResponseEntity<>(d, HttpStatus.CREATED);
         return new ResponseEntity<>(HttpStatus.I_AM_A_TEAPOT);
     }
 
-
+    
     @DeleteMapping("/appointments/{id}")
     public ResponseEntity<HttpStatus> deleteAppointment(@PathVariable("id") long id){
 
